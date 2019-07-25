@@ -69,51 +69,61 @@ namespace Certification70_487_Framework4._6
         [TestMethod]
         public void FileChangeMonitor(string key, string filePath)
         {
-            string textFromFile = null;
+            ObjectCache cacheInstance = MemoryCache.Default;
+            var endsAt = DateTime.UtcNow.AddMinutes(5);
             filePath = Path.Combine(AppContext.BaseDirectory, filePath);
 
-            var cacheInstance = MemoryCache.Default;
-
-            var policy = new CacheItemPolicy
-            {
-                Priority = CacheItemPriority.Default,
-                AbsoluteExpiration = DateTime.UtcNow.Add(TimeSpan.FromMinutes(5)),
-            };
-
-            policy.ChangeMonitors.Add(new HostFileChangeMonitor(new[] { filePath }));
-
-            textFromFile = File.ReadAllText(filePath);
-            cacheInstance.Set(key, textFromFile, policy);
-
-            var endsAt = DateTime.UtcNow.AddMinutes(5);
+            cacheInstance.Set(key, File.ReadAllText(filePath), GetPoliciesForDependency(key, filePath, cacheInstance));
 
             while (DateTime.UtcNow < endsAt)
             {
                 string textFromCache = cacheInstance.Get(key)?.ToString() ?? null;
+
                 if (textFromCache == null)
                 {
-                    textFromFile = File.ReadAllText(filePath);
-
-                    Debug.WriteLine("file has changed: ");
-                    Debug.WriteLine(textFromFile);
-
-                    var newPolicy = new CacheItemPolicy
-                    {
-                        Priority = CacheItemPriority.Default,
-                        AbsoluteExpiration = DateTime.UtcNow.Add(TimeSpan.FromMinutes(5)),
-                    };
-
-                    newPolicy.ChangeMonitors.Add(new HostFileChangeMonitor(new[] { filePath }));
-                    cacheInstance.Set(key, textFromFile, newPolicy);
+                    Debug.WriteLine("From file:::::::::::::::::::::::::::::::::::::::: ");
+                    Debug.WriteLine(File.ReadAllText(filePath));
                 }
                 else
                 {
-                    Debug.WriteLine("From cache: ");
+                    Debug.WriteLine("From cache::::::::::::::::::::::::::::::::::::::: ");
                     Debug.WriteLine(textFromCache);
                 }
 
                 Thread.Sleep(TimeSpan.FromSeconds(5));
             }
+        }
+
+        private static CacheItemPolicy GetPoliciesForDependency(string key, string filePath, ObjectCache cacheInstance)
+        {
+            var policy = new CacheItemPolicy
+            {
+                Priority = CacheItemPriority.Default,
+                AbsoluteExpiration = DateTime.UtcNow.Add(TimeSpan.FromMinutes(5)),
+                RemovedCallback = new CacheEntryRemovedCallback((arguments) =>
+                {
+                    var textFile = string.Empty;
+
+                    try
+                    {
+                        textFile = File.ReadAllText(filePath);
+                    }
+                    catch (Exception)
+                    {
+                        Thread.Sleep(TimeSpan.FromSeconds(1));
+                        textFile = File.ReadAllText(filePath);
+                    }
+                    finally
+                    {
+                        // Reload the file into cache
+                        cacheInstance.Set(key, textFile, GetPoliciesForDependency(key, filePath, cacheInstance));
+                    }
+                })
+            };
+
+            policy.ChangeMonitors.Add(new HostFileChangeMonitor(new[] { filePath }));
+
+            return policy;
         }
     }
 }
