@@ -60,6 +60,7 @@
     <Reference Include="System.Runtime.Caching" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Unit 1\AzureStorage\TableStoragTest .cs" />
     <Compile Include="Unit 1\AzureStorage\QueueStoragTest.cs" />
     <Compile Include="Unit 1\AzureStorage\BlobStoragTest.cs" />
     <Compile Include="Unit 1\Cache\Cache_Test.cs" />
