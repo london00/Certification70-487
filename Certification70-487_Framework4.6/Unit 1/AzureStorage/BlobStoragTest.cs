@@ -5,13 +5,11 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Certification70_487_Framework4._6.Unit_1.AzureStorage
 {
     [TestClass]
-    public class BlobStoragTest
+    public class BlobStorageTest
     {
         private const string CONTAINER_NAME = "fileContainer";
         private CloudBlobContainer containerReference;
@@ -23,17 +21,17 @@ namespace Certification70_487_Framework4._6.Unit_1.AzureStorage
             CloudStorageAccount cloudStorageAccount = new CloudStorageAccount(storageAccount, true);
             CloudBlobClient client = cloudStorageAccount.CreateCloudBlobClient();
             this.containerReference = client.GetContainerReference(CONTAINER_NAME.ToLower());
+            containerReference.CreateIfNotExists();
+            Assert.IsTrue(containerReference.Exists(), "Container doesn´t exist");
         }
 
         [TestMethod]
         [DataRow("test.txt")]
         public void UploadFile_Test(string fileName)
         {
-            var filePath = Path.Combine(AppContext.BaseDirectory, fileName);
-            containerReference.CreateIfNotExists();
             CloudBlockBlob cloudBlockBlob = containerReference.GetBlockBlobReference(fileName);
 
-            using (var stream = new FileStream(filePath, FileMode.Open))
+            using (var stream = new FileStream(Path.Combine(AppContext.BaseDirectory, fileName), FileMode.Open))
             {
                 cloudBlockBlob.UploadFromStream(stream);
                 Assert.AreEqual(cloudBlockBlob.Properties.Length, stream.Length);
@@ -45,7 +43,6 @@ namespace Certification70_487_Framework4._6.Unit_1.AzureStorage
         public void ReadFile_Test(string fileName)
         {
             // Get container
-            Assert.IsTrue(containerReference.Exists(), "Container doesn´t exist");
             CloudBlockBlob cloudBlockBlob = containerReference.GetBlockBlobReference(fileName);
 
             // Read blob
@@ -58,7 +55,6 @@ namespace Certification70_487_Framework4._6.Unit_1.AzureStorage
         public void DeleteFile_Test(string fileName)
         {
             // Get container
-            Assert.IsTrue(containerReference.Exists(), "Container doesn´t exist");
             CloudBlockBlob cloudBlockBlob = containerReference.GetBlockBlobReference(fileName);
 
             // Read blob
