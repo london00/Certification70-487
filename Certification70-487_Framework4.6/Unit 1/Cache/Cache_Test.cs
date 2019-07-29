@@ -5,7 +5,7 @@ using System.Runtime.Caching;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Certification70_487_Framework4._6
+namespace Certification70_487_Framework4._6Unit_1.AzureStorage
 {
     [TestClass]
     public class Cache_Test
