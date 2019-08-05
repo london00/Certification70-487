@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="beb7061e-402b-4700-9bbb-f507bd7f2cbd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:50613/MyFirstService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MyFirstService.disco" MetadataType="Disco" ID="5b62bc27-ede3-42ab-9399-67035ff94328" SourceId="1" SourceUrl="http://localhost:50613/MyFirstService.svc?disco" />
+    <MetadataFile FileName="MyFirstService.xsd" MetadataType="Schema" ID="10da4944-af06-466b-ab39-2d676a8407ed" SourceId="1" SourceUrl="http://localhost:50613/MyFirstService.svc?xsd=xsd1" />
+    <MetadataFile FileName="MyFirstService1.xsd" MetadataType="Schema" ID="6972ab59-fc9d-4459-bd03-0da8634f8025" SourceId="1" SourceUrl="http://localhost:50613/MyFirstService.svc?xsd=xsd2" />
+    <MetadataFile FileName="MyFirstService2.xsd" MetadataType="Schema" ID="b7087a1a-d93c-4f3a-a3a0-10b94012b773" SourceId="1" SourceUrl="http://localhost:50613/MyFirstService.svc?xsd=xsd0" />
+    <MetadataFile FileName="MyFirstService.wsdl" MetadataType="Wsdl" ID="4eec46fe-d227-46b2-aa56-4fc85162fd08" SourceId="1" SourceUrl="http://localhost:50613/MyFirstService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
