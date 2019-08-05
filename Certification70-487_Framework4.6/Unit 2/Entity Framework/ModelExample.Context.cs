@@ -12,7 +12,8 @@ namespace Certification70_487_Framework4._6.Unit_2.Entity_Framework
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+    using System.Data.Objects;
+
     public partial class CertificationCourseEntities : DbContext
     {
         public CertificationCourseEntities()

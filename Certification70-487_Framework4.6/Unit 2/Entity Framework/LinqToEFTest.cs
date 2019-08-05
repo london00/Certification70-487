@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Data.EntityClient;
+//using System.Data.Objects;
 using System.Diagnostics;
 using System.Linq;
 using System.Transactions;
@@ -59,7 +60,13 @@ namespace Certification70_487_Framework4._6.Unit_2.Entity_Framework
                 Genre = "M"
             });
 
-            IQueryable query = from e in dbContext.Employee where e.BirtthDate.Year < 1995 select e.FirstName;
+            IQueryable<string> query = (from e in dbContext.Employee where e.BirtthDate.Year < 1995 select e.FirstName);
+
+            #region ObjectQuery
+            // For old versions using queries as SELECT VALUE product FROM AdventureWorksEntities.Products AS product
+            // https://docs.microsoft.com/en-us/dotnet/api/system.data.objects.objectquery-1?view=netframework-4.8
+            // ObjectQuery<string> a = new ObjectQuery<string>("", (ObjectContext) dbContext);
+            #endregion
 
             Debug.WriteLine(query.ToString());
         }
@@ -71,7 +78,13 @@ namespace Certification70_487_Framework4._6.Unit_2.Entity_Framework
         {
             try
             {
-                using (var scope = new TransactionScope())
+                // Set an isolatio level 
+                TransactionOptions transactionOptions = new TransactionOptions {
+                    IsolationLevel =  System.Transactions.IsolationLevel.ReadCommitted,
+                    Timeout = TimeSpan.FromSeconds(10)
+                };
+
+                using (var scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
                 {
                     var employee = new Employee
                     {
