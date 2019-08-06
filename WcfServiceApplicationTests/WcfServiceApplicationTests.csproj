@@ -64,7 +64,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\MyFisrServiceWCFReference\UnitTest1.cs" />
     <Compile Include="Connected Services\MySecondWCFServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -86,6 +85,9 @@
     <None Include="Connected Services\MyFisrServiceWCFReference\MyFirstService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\MyFisrServiceWCFReference\WcfServiceApplicationTests.MyFisrServiceWCFReference.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\MySecondWCFServiceReference\MySecondWCFService.wsdl" />
     <None Include="Connected Services\MySecondWCFServiceReference\MySecondWCFService.xsd">
       <SubType>Designer</SubType>
@@ -93,14 +95,17 @@
     <None Include="Connected Services\MySecondWCFServiceReference\MySecondWCFService1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\MySecondWCFServiceReference\MySecondWCFService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\MySecondWCFServiceReference\MySecondWCFService21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\MySecondWCFServiceReference\MySecondWCFService22.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\WcfServiceApplication.CompositeType.datasource" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WcfServiceApplication\WcfServiceApplication.csproj">
-      <Project>{905CF184-CAFF-43E5-9B0C-F75CDD57A927}</Project>
-      <Name>WcfServiceApplication</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

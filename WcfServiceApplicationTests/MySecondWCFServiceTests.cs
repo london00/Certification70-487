@@ -1,22 +1,44 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WcfServiceApplication;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ServiceModel;
+using WcfServiceApplicationTests.MySecondWCFServiceReference;
 
 namespace WcfServiceApplication.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class MySecondWCFServiceTests
     {
-        [TestMethod()]
+        [TestMethod]
         public void GetFactorialNumberTest()
         {
-            MySecondWCFService mySecondWCFService = new MySecondWCFService();
+            IMySecondWCFService mySecondWCFService = new MySecondWCFServiceClient();
             var result = mySecondWCFService.GetFactorialNumber(5);
             Assert.AreEqual(result, 120);
+        }
+
+        [TestMethod]
+        public void GetFactorialNumber_IsEqualsOrLessThanZero_ThrowsException()
+        {
+            IMySecondWCFService mySecondWCFService = new MySecondWCFServiceClient();
+            try
+            {
+                var result = mySecondWCFService.GetFactorialNumber(0);
+            }
+            catch (FaultException ex)
+            {
+
+            }
+            catch
+            {
+                Assert.Fail("Web service didn´t throw ArgumentOutOfRangeException");
+            }
+        }
+
+        [TestMethod]
+        public void ApplyOperationTest()
+        {
+            IMySecondWCFService mySecondWCFService = new MySecondWCFServiceClient();
+            var result = mySecondWCFService.ApplyOperation(3, 2, EnumOperator.Minus);
+            Assert.AreEqual(result, 1);
         }
     }
 }

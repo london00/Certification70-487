@@ -22,10 +22,13 @@
     <MetadataSource Address="http://localhost:50613/MySecondWCFService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="MySecondWCFService.wsdl" MetadataType="Wsdl" ID="15a29cb2-113a-4740-868e-877f285769fa" SourceId="1" SourceUrl="http://localhost:50613/MySecondWCFService.svc?wsdl" />
+    <MetadataFile FileName="MySecondWCFService2.xsd" MetadataType="Schema" ID="588c81ba-1e7b-4fa8-8895-f3c2c1724c2f" SourceId="1" SourceUrl="http://localhost:50613/MySecondWCFService.svc?xsd=xsd2" />
     <MetadataFile FileName="MySecondWCFService.disco" MetadataType="Disco" ID="ec4fc6e3-58dc-4607-b7b8-aa8194050a43" SourceId="1" SourceUrl="http://localhost:50613/MySecondWCFService.svc?disco" />
     <MetadataFile FileName="MySecondWCFService.xsd" MetadataType="Schema" ID="cab19ae6-3e47-45b5-8c02-82ae7a5c2c5d" SourceId="1" SourceUrl="http://localhost:50613/MySecondWCFService.svc?xsd=xsd0" />
-    <MetadataFile FileName="MySecondWCFService.wsdl" MetadataType="Wsdl" ID="15a29cb2-113a-4740-868e-877f285769fa" SourceId="1" SourceUrl="http://localhost:50613/MySecondWCFService.svc?wsdl" />
     <MetadataFile FileName="MySecondWCFService1.xsd" MetadataType="Schema" ID="5044a612-9888-4fe8-8e70-6632c12363cb" SourceId="1" SourceUrl="http://localhost:50613/MySecondWCFService.svc?xsd=xsd1" />
+    <MetadataFile FileName="MySecondWCFService21.xsd" MetadataType="Schema" ID="31f609eb-c2a0-4634-adb7-4b2508852c82" SourceId="1" SourceUrl="http://localhost:50613/MySecondWCFService.svc?xsd=xsd4" />
+    <MetadataFile FileName="MySecondWCFService22.xsd" MetadataType="Schema" ID="23edf220-573d-4f3b-aec8-1298320eccac" SourceId="1" SourceUrl="http://localhost:50613/MySecondWCFService.svc?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

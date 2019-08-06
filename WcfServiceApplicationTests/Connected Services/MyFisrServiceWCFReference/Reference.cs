@@ -9,7 +9,70 @@
 //------------------------------------------------------------------------------
 
 namespace WcfServiceApplicationTests.MyFisrServiceWCFReference {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceApplication")]
+    [System.SerializableAttribute()]
+    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool BoolValueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StringValueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool BoolValue {
+            get {
+                return this.BoolValueField;
+            }
+            set {
+                if ((this.BoolValueField.Equals(value) != true)) {
+                    this.BoolValueField = value;
+                    this.RaisePropertyChanged("BoolValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StringValue {
+            get {
+                return this.StringValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
+                    this.StringValueField = value;
+                    this.RaisePropertyChanged("StringValue");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MyFisrServiceWCFReference.IMyFirstService")]
@@ -22,10 +85,10 @@ namespace WcfServiceApplicationTests.MyFisrServiceWCFReference {
         System.Threading.Tasks.Task<string> GetDataAsync(int value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyFirstService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IMyFirstService/GetDataUsingDataContractResponse")]
-        WcfServiceApplication.CompositeType GetDataUsingDataContract(WcfServiceApplication.CompositeType composite);
+        WcfServiceApplicationTests.MyFisrServiceWCFReference.CompositeType GetDataUsingDataContract(WcfServiceApplicationTests.MyFisrServiceWCFReference.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyFirstService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IMyFirstService/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<WcfServiceApplication.CompositeType> GetDataUsingDataContractAsync(WcfServiceApplication.CompositeType composite);
+        System.Threading.Tasks.Task<WcfServiceApplicationTests.MyFisrServiceWCFReference.CompositeType> GetDataUsingDataContractAsync(WcfServiceApplicationTests.MyFisrServiceWCFReference.CompositeType composite);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -63,11 +126,11 @@ namespace WcfServiceApplicationTests.MyFisrServiceWCFReference {
             return base.Channel.GetDataAsync(value);
         }
         
-        public WcfServiceApplication.CompositeType GetDataUsingDataContract(WcfServiceApplication.CompositeType composite) {
+        public WcfServiceApplicationTests.MyFisrServiceWCFReference.CompositeType GetDataUsingDataContract(WcfServiceApplicationTests.MyFisrServiceWCFReference.CompositeType composite) {
             return base.Channel.GetDataUsingDataContract(composite);
         }
         
-        public System.Threading.Tasks.Task<WcfServiceApplication.CompositeType> GetDataUsingDataContractAsync(WcfServiceApplication.CompositeType composite) {
+        public System.Threading.Tasks.Task<WcfServiceApplicationTests.MyFisrServiceWCFReference.CompositeType> GetDataUsingDataContractAsync(WcfServiceApplicationTests.MyFisrServiceWCFReference.CompositeType composite) {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
     }

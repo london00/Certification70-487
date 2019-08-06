@@ -3,7 +3,10 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:50613/MySecondWCFService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:50613/MySecondWCFService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel" />
       <xsd:import schemaLocation="http://localhost:50613/MySecondWCFService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:50613/MySecondWCFService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import schemaLocation="http://localhost:50613/MySecondWCFService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/WcfServiceApplication" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IMySecondWCFService_GetFactorialNumber_InputMessage">
@@ -12,10 +15,28 @@
   <wsdl:message name="IMySecondWCFService_GetFactorialNumber_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetFactorialNumberResponse" />
   </wsdl:message>
+  <wsdl:message name="IMySecondWCFService_GetFactorialNumber_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q1:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="IMySecondWCFService_ApplyOperation_InputMessage">
+    <wsdl:part name="parameters" element="tns:ApplyOperation" />
+  </wsdl:message>
+  <wsdl:message name="IMySecondWCFService_ApplyOperation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ApplyOperationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMySecondWCFService_ApplyOperation_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q2:FaultException" />
+  </wsdl:message>
   <wsdl:portType name="IMySecondWCFService">
     <wsdl:operation name="GetFactorialNumber">
       <wsdl:input wsaw:Action="http://tempuri.org/IMySecondWCFService/GetFactorialNumber" message="tns:IMySecondWCFService_GetFactorialNumber_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMySecondWCFService/GetFactorialNumberResponse" message="tns:IMySecondWCFService_GetFactorialNumber_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMySecondWCFService/GetFactorialNumberFaultExceptionFault" name="FaultExceptionFault" message="tns:IMySecondWCFService_GetFactorialNumber_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ApplyOperation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMySecondWCFService/ApplyOperation" message="tns:IMySecondWCFService_ApplyOperation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMySecondWCFService/ApplyOperationResponse" message="tns:IMySecondWCFService_ApplyOperation_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMySecondWCFService/ApplyOperationFaultExceptionFault" name="FaultExceptionFault" message="tns:IMySecondWCFService_ApplyOperation_FaultExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMySecondWCFService" type="tns:IMySecondWCFService">
@@ -28,6 +49,21 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="FaultExceptionFault">
+        <soap:fault use="literal" name="FaultExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ApplyOperation">
+      <soap:operation soapAction="http://tempuri.org/IMySecondWCFService/ApplyOperation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultExceptionFault">
+        <soap:fault use="literal" name="FaultExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="MySecondWCFService">

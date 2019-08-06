@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Text;
 
 namespace WcfServiceApplication
 {
@@ -12,6 +8,23 @@ namespace WcfServiceApplication
     public interface IMySecondWCFService
     {
         [OperationContract]
+        [FaultContract(typeof(FaultException))]
         int GetFactorialNumber(int number);
+
+        [OperationContract]
+        [FaultContract(typeof(FaultException))]
+        int ApplyOperation(int number1, int number2, EnumOperator enumOperator);
+    }
+
+    [DataContract]
+    public enum EnumOperator {
+        [EnumMember]
+        Plus,
+        [EnumMember]
+        Minus,
+        [EnumMember]
+        Times,
+        // As this enum element has not EnumMember decorator so it is not exposed in the Web Service.
+        DividedBy
     }
 }

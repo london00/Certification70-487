@@ -1,21 +1,16 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WcfServiceApplication;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using WcfServiceApplicationTests.MyFisrServiceWCFReference;
 
 namespace WcfServiceApplication.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class Service1Tests
     {
         [TestMethod]
         [DataRow(99)]
         public void GetDataTest(int testData)
         {
-            MyFirstService myFirstService = new MyFirstService();
+            IMyFirstService myFirstService = new MyFirstServiceClient();
             var response = myFirstService.GetData(testData);
             
             Assert.AreEqual(string.Format("You entered: {0}", testData), response);
