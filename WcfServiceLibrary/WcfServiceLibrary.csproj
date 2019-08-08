@@ -49,10 +49,7 @@
     <Compile Include="MyTestService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleAppToHostWCFLibrary\ConsoleAppToHostWCFLibrary.csproj">
-      <Project>{d37a394f-a907-416e-8013-ba32e3e0df9f}</Project>
-      <Name>ConsoleAppToHostWCFLibrary</Name>
-    </ProjectReference>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
