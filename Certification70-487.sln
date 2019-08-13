@@ -13,6 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceApplicationTests"
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WCF", "WCF", "{61535469-C7B7-47DC-AC67-6CB2AB4DE274}"
+	ProjectSection(SolutionItems) = preProject
+		Conmmand Line - Code Generation for CLient.txt = Conmmand Line - Code Generation for CLient.txt
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IIS", "IIS", "{A0D4200E-30B7-4B8D-8CFE-60BD27CBAC1E}"
 EndProject

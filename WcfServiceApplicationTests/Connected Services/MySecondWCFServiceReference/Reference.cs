@@ -14,41 +14,38 @@ namespace WcfServiceApplicationTests.MySecondWCFServiceReference {
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="EnumOperator", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceApplication")]
-    public enum EnumOperator : int {
+    internal enum EnumOperator : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         Plus = 0,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         Minus = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Times = 2,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MySecondWCFServiceReference.IMySecondWCFService")]
-    public interface IMySecondWCFService {
+    internal interface IMySecondWCFService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMySecondWCFService/GetFactorialNumber", ReplyAction="http://tempuri.org/IMySecondWCFService/GetFactorialNumberResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IMySecondWCFService/GetFactorialNumberFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
         int GetFactorialNumber(int number);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMySecondWCFService/GetFactorialNumber", ReplyAction="http://tempuri.org/IMySecondWCFService/GetFactorialNumberResponse")]
-        System.Threading.Tasks.Task<int> GetFactorialNumberAsync(int number);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMySecondWCFService/ApplyOperation", ReplyAction="http://tempuri.org/IMySecondWCFService/ApplyOperationResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.FaultException), Action="http://tempuri.org/IMySecondWCFService/ApplyOperationFaultExceptionFault", Name="FaultException", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
         int ApplyOperation(int number1, int number2, WcfServiceApplicationTests.MySecondWCFServiceReference.EnumOperator enumOperator);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMySecondWCFService/ApplyOperation", ReplyAction="http://tempuri.org/IMySecondWCFService/ApplyOperationResponse")]
-        System.Threading.Tasks.Task<int> ApplyOperationAsync(int number1, int number2, WcfServiceApplicationTests.MySecondWCFServiceReference.EnumOperator enumOperator);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IMySecondWCFServiceChannel : WcfServiceApplicationTests.MySecondWCFServiceReference.IMySecondWCFService, System.ServiceModel.IClientChannel {
+    internal interface IMySecondWCFServiceChannel : WcfServiceApplicationTests.MySecondWCFServiceReference.IMySecondWCFService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class MySecondWCFServiceClient : System.ServiceModel.ClientBase<WcfServiceApplicationTests.MySecondWCFServiceReference.IMySecondWCFService>, WcfServiceApplicationTests.MySecondWCFServiceReference.IMySecondWCFService {
+    internal partial class MySecondWCFServiceClient : System.ServiceModel.ClientBase<WcfServiceApplicationTests.MySecondWCFServiceReference.IMySecondWCFService>, WcfServiceApplicationTests.MySecondWCFServiceReference.IMySecondWCFService {
         
         public MySecondWCFServiceClient() {
         }
@@ -73,16 +70,8 @@ namespace WcfServiceApplicationTests.MySecondWCFServiceReference {
             return base.Channel.GetFactorialNumber(number);
         }
         
-        public System.Threading.Tasks.Task<int> GetFactorialNumberAsync(int number) {
-            return base.Channel.GetFactorialNumberAsync(number);
-        }
-        
         public int ApplyOperation(int number1, int number2, WcfServiceApplicationTests.MySecondWCFServiceReference.EnumOperator enumOperator) {
             return base.Channel.ApplyOperation(number1, number2, enumOperator);
-        }
-        
-        public System.Threading.Tasks.Task<int> ApplyOperationAsync(int number1, int number2, WcfServiceApplicationTests.MySecondWCFServiceReference.EnumOperator enumOperator) {
-            return base.Channel.ApplyOperationAsync(number1, number2, enumOperator);
         }
     }
 }

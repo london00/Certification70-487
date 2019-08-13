@@ -1,0 +1,35 @@
+-- Run this instruction on VS Command Line
+
+Example:
+svcutil /directory:"C:/svcutil_Test" /target:code  /language:C# http://localhost:50613/MyFirstService.svc?wsdl
+
+Switch						Behavior																			Shortcut
+/directory:<directory>		Specifies the output directory in which the generated files will be placed.			/d
+							If no value is specified, it uses the current directory for the output. 
+							If the directory has already been used, output will be overwritten if the 
+							utility is run with this switch.											
+
+/help						Shows the available command-line options. Very unlikely to appear on the test,		/?
+							but if it does, something in the stem will mention “help” or indicate “you need 
+							to list the available command-line options for Svcutil.exe, which of the 
+							following….”
+
+/noLogo						Suppresses the “Logo” information (copyright and banner message).					N/A
+
+/svcutilConfig:<configFile>	Puts the configuration information in a file other than the default App.config		N/A
+							file. You can also use this option to register the <system.ServiceModel> elements 
+							without changing the tool’s configuration file.
+
+/async						Creates the proxy class with both standard and asynchronous method signatures.		/a
+							By default, just the standard method signatures are included, so if you see any 
+							indication that the asynchronous methods need to be included, anything without 
+							the /async option will not be the answer.
+
+/internal					Generates the methods using the internal access modifier instead of generating		/i
+							them as public.
+
+/target:<output type>		Instructs the tool to create a specific output. You can use one of three options:	/t
+							code, metadata, xmlSerializer
+
+/language:<language>		Instructs the tool to create a specific output for an spcific language.				/l
+							You can use: "C#" or "VB".

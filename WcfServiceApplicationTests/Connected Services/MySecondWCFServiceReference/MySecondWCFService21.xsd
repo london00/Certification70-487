@@ -4,6 +4,7 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="Plus" />
       <xs:enumeration value="Minus" />
+      <xs:enumeration value="Times" />
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="EnumOperator" nillable="true" type="tns:EnumOperator" />
