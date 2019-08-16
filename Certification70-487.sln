@@ -33,6 +33,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppHost_AzureBusRela
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFClientConsoleApplication_AzureBusRelay", "WCFClientConsoleApplication_AzureBusRelay\WCFClientConsoleApplication_AzureBusRelay.csproj", "{39065F8D-81C4-4D95-A2ED-D2F74491637A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web API", "Web API", "{B5DDC5B5-28FC-491E-8378-DE5E2DDBD6F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{A6640E71-479A-41D7-A597-8869C997E879}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +75,10 @@ Global
 		{39065F8D-81C4-4D95-A2ED-D2F74491637A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39065F8D-81C4-4D95-A2ED-D2F74491637A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39065F8D-81C4-4D95-A2ED-D2F74491637A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6640E71-479A-41D7-A597-8869C997E879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6640E71-479A-41D7-A597-8869C997E879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6640E71-479A-41D7-A597-8869C997E879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6640E71-479A-41D7-A597-8869C997E879}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +94,7 @@ Global
 		{B5956EB7-C602-4B05-B0CA-E8CF708CE2F7} = {A36E1CDD-1A12-485F-B818-7F026BBDB35F}
 		{E4C508FE-914D-4F46-A6C8-2E83342990E2} = {A36E1CDD-1A12-485F-B818-7F026BBDB35F}
 		{39065F8D-81C4-4D95-A2ED-D2F74491637A} = {A36E1CDD-1A12-485F-B818-7F026BBDB35F}
+		{A6640E71-479A-41D7-A597-8869C997E879} = {B5DDC5B5-28FC-491E-8378-DE5E2DDBD6F2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C6CD4236-F4C6-4230-B5AD-1819D10CBBEC}
