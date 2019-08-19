@@ -99,6 +99,7 @@
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\VideoStreamingController.cs" />
     <Compile Include="Filters\CustomFilter.cs" />
+    <Compile Include="Filters\RequireSSLFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

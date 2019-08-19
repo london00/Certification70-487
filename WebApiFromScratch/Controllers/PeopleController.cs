@@ -22,6 +22,7 @@ namespace WebApiFromScratch.Controllers
 
         // Custom Verb
         [AcceptVerbs("HOLA")]
+        [RequireSSLFilter]
         public List<Person> GetAllPeople()
         {
             return personService.GetExamplePeople();
