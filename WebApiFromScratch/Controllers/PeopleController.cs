@@ -10,34 +10,18 @@ namespace WebApiFromScratch.Controllers
 {
     public class PeopleController : ApiController
     {
-        private List<Person> GetExamplePeople() {
-            var people = new List<Person>();
-            people.Add(new Person
-            {
-                Name = "Geiser",
-                Age = 27
-            });
+        private readonly IPerson personService;
 
-            people.Add(new Person
-            {
-                Name = "John",
-                Age = 40
-            });
-
-            people.Add(new Person
-            {
-                Name = "Juan",
-                Age = 20
-            });
-
-            return people;
+        public PeopleController(IPerson person)
+        {
+            this.personService = person;
         }
 
         // Custom Verb
         [AcceptVerbs("HOLA")]
         public List<Person> GetAllPeople()
         {
-            return GetExamplePeople();
+            return personService.GetExamplePeople();
         }
 
 
@@ -45,7 +29,7 @@ namespace WebApiFromScratch.Controllers
         [ActionName("GetPersonByName")]
         public Person Person([FromUri] string name)
         {
-            var person = GetExamplePeople().FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
+            var person = personService.GetExamplePeople().FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
 
 
             if (person == null)
@@ -60,7 +44,7 @@ namespace WebApiFromScratch.Controllers
         [HttpGet]
         public Person PersonByNameWithoutCustomActionName([FromUri] string name)
         {
-            var person = GetExamplePeople().FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
+            var person = personService.GetExamplePeople().FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
 
             if (person == null)
             {
