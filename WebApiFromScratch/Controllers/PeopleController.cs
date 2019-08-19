@@ -28,7 +28,6 @@ namespace WebApiFromScratch.Controllers
             return personService.GetExamplePeople();
         }
 
-
         [HttpGet]
         [ActionName("GetPersonByName")]
         [CustomFilter]
@@ -74,6 +73,20 @@ namespace WebApiFromScratch.Controllers
             await Task.Factory.StartNew(() => {
                 Thread.Sleep(10000);
             });
+
+            return person;
+        }
+
+        [HttpGet]
+        [Authorize]
+        public Person PersonByNameAuthenticationRequired([FromUri] string name)
+        {
+            var person = personService.GetExamplePeople().FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
+
+            if (person == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
 
             return person;
         }
