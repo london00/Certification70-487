@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using WebApiFromScratch.Filters;
 using WebApiFromScratch.Models;
 
@@ -80,6 +81,20 @@ namespace WebApiFromScratch.Controllers
         [HttpGet]
         [Authorize]
         public Person PersonByNameAuthenticationRequired([FromUri] string name)
+        {
+            var person = personService.GetExamplePeople().FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
+
+            if (person == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+
+            return person;
+        }
+
+        [HttpGet]
+        [EnableCors(origins: "http://myanotherclient:8080", headers: "*", methods: "*")
+        public Person PersonByNameCORSEnabled([FromUri] string name)
         {
             var person = personService.GetExamplePeople().FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
 

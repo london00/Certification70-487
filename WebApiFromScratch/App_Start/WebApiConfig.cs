@@ -12,6 +12,7 @@ namespace WebApiFromScratch
     {
         public static void Register(HttpConfiguration config)
         {
+            config.EnableCors(); 
             config.DependencyResolver = new UnityResolver(BuildDependencies());
 
             // Web API configuration and services
