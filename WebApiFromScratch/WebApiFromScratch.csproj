@@ -90,12 +90,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Videos\Ejemplo_de_video.mp4" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\MessageHandlers\LoggingMessageHandler.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
+    <Compile Include="Controllers\VideoStreamingController.cs" />
     <Compile Include="Filters\CustomFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
