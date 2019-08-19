@@ -40,12 +40,27 @@ namespace WebApiFromScratch.Controllers
             return GetExamplePeople();
         }
 
+
         [HttpGet]
         [ActionName("GetPersonByName")]
         public Person Person([FromUri] string name)
         {
             var person = GetExamplePeople().FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
 
+
+            if (person == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+
+
+            return person;
+        }
+
+        [HttpGet]
+        public Person PersonByNameWithoutCustomActionName([FromUri] string name)
+        {
+            var person = GetExamplePeople().FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
 
             if (person == null)
             {

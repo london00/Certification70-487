@@ -10,6 +10,7 @@ namespace WebApiFromScratch
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            config.MessageHandlers.Add(new LoggingMessageHandler());
 
             // Web API routes
             config.MapHttpAttributeRoutes();
