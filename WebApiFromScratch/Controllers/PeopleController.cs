@@ -94,6 +94,7 @@ namespace WebApiFromScratch.Controllers
 
         [HttpGet]
         [EnableCors(origins: "http://myanotherclient:8080", headers: "*", methods: "*")
+        [AuthorizationBlackListFilter()]
         public Person PersonByNameCORSEnabled([FromUri] string name)
         {
             var person = personService.GetExamplePeople().FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
