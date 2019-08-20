@@ -13,7 +13,7 @@ namespace WebAPISelfHostingConsoleApplication
 
             if (typeof(WebApiFromScratch.Controllers.PeopleController) == null)
             {
-                // Worka-round
+                // Work-around
                 return;
             }
 
