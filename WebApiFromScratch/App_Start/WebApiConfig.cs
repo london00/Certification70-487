@@ -28,7 +28,7 @@ namespace WebApiFromScratch
             );
         }
 
-        private static UnityContainer BuildDependencies()
+        public static UnityContainer BuildDependencies()
         {
             var container = new UnityContainer();
             container.RegisterType<IPerson, Person>();
