@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Net.Http;
-using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Certification70_487_Framework4._6.Unit_4
 {
@@ -27,6 +25,20 @@ namespace Certification70_487_Framework4._6.Unit_4
         }
 
         #endregion
+
+        [TestMethod]
+        public void ParallelHttpRequest_Test()
+        {
+            Task.WaitAll(
+                this.httpClient.GetAsync("api/People/GetPersonByName" + "?name=geiser"),
+                this.httpClient.GetAsync("api/People/GetPersonByName" + "?name=geiser"),
+                this.httpClient.GetAsync("api/People/GetPersonByName" + "?name=geiser"),
+                this.httpClient.GetAsync("api/People/GetPersonByName" + "?name=geiser"),
+                this.httpClient.GetAsync("api/People/GetPersonByName" + "?name=geiser")
+            );
+
+            Debug.WriteLine("Parallel execution has finished");
+        }
 
         [TestMethod]
         public void HttpGet_Test()
@@ -71,7 +83,6 @@ namespace Certification70_487_Framework4._6.Unit_4
             {
                 Debug.WriteLine(ex.Message);
             }
-            
         }
     }
 
