@@ -10,7 +10,7 @@ using System.Collections.Generic;
 namespace UnitTestProjectCore
 {
     [TestClass]
-    public class UnitTest1
+    public class CosmosDBTest
     {
         // The Cosmos client instance
         private CosmosClient cosmosClient;
@@ -166,7 +166,7 @@ namespace UnitTestProjectCore
         public void QueryLinqTest()
         {
             var querable = this.container.GetItemLinqQueryable<Family>(true);
-            var family = querable.Where(x => x.LastName == "Andersen").ToList();
+            var family = querable.Where(x => x.IsRegistered).ToList();
         }
 
         [TestMethod]
@@ -187,6 +187,20 @@ namespace UnitTestProjectCore
 
             andersenFamilyResponse = this.container.UpsertItemAsync(family, new PartitionKey(family.LastName)).Result;
             Debug.WriteLine("Is registered : ", andersenFamilyResponse.Resource.IsRegistered);
+        }
+
+        [TestMethod]
+        public void DeleteTest()
+        {
+            var basicInfo = new
+            {
+                Id = "Andersen.1",
+                LastName = "Andersen"
+            };
+
+            // Read the item to see if it exists. Note ReadItemAsync will not throw an exception if an item does not exist. Instead, we check the StatusCode property off the response object. 
+            ItemResponse<Family> response = this.container.DeleteItemAsync<Family>(basicInfo.Id, new PartitionKey(basicInfo.LastName)).Result;
+            Debug.WriteLine("Is deleted : ", basicInfo.Id);
         }
     }
 }
