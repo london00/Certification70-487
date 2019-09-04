@@ -144,7 +144,6 @@
     <Compile Include="Unit 1\AzureStorage\TableStoragTest .cs" />
     <Compile Include="Unit 1\AzureStorage\QueueStoragTest.cs" />
     <Compile Include="Unit 1\AzureStorage\BlobStoragTest.cs" />
-    <Compile Include="Unit 1\AzureStorage\CosmosDBTest.cs" />
     <Compile Include="Unit 1\Cache\Cache_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unit 1\XML\ExamplePOCOClass.cs" />

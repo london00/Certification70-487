@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiFromScratch", "WebApi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPISelfHostingConsoleApplication", "WebAPISelfHostingConsoleApplication\WebAPISelfHostingConsoleApplication.csproj", "{7FC99F43-77F9-471A-A012-3E059D6E147C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestProjectCore", "UnitTestProjectCore\UnitTestProjectCore.csproj", "{59863C32-9DA4-4A0B-A20A-7A7E5F6BD478}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +87,10 @@ Global
 		{7FC99F43-77F9-471A-A012-3E059D6E147C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FC99F43-77F9-471A-A012-3E059D6E147C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FC99F43-77F9-471A-A012-3E059D6E147C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59863C32-9DA4-4A0B-A20A-7A7E5F6BD478}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59863C32-9DA4-4A0B-A20A-7A7E5F6BD478}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59863C32-9DA4-4A0B-A20A-7A7E5F6BD478}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59863C32-9DA4-4A0B-A20A-7A7E5F6BD478}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
