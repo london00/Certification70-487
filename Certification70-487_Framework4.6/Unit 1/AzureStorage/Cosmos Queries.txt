@@ -1,0 +1,13 @@
+﻿SELECT 
+    p.id,
+    p.manufacturer,
+    p.description
+FROM Products p
+WHERE p.id > "0"
+ORDER BY p.id DESC
+
+
+SELECT 
+    *
+FROM Products p
+WHERE p.shipping.dimensions.width > 6
