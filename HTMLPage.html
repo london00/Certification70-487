@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Test web socket</title>
+</head>
+<body>
+    Web Sockets
+    <div>
+        <label>Please write your message</label>
+        <input id="message" />
+        <button type="button" onclick="ConnectToSession()">Send</button>
+    </div>
+    <ul id="Messages">
+    </ul>
+    <script>
+        var name = prompt("What is your name?");
+    </script>
+    <script>
+        var socket = new WebSocket("wss://localhost:44347/api/WebSocket/Connect");
+        socket.onopen = function (msg, ev) {
+            console.info("Socket - Connection stablished");
+            console.info({
+                message: msg,
+                event: ev
+            });
+
+            socket.send(name + " has connected to the room");
+        }
+
+        socket.onmessage = function (msg, ev) {
+            console.log("Socket - Message received");
+            console.log({
+                message: msg,
+                event: ev
+            });
+
+            var messages = document.getElementById("Messages");
+            var currentMessage = document.createElement("li");
+            currentMessage.innerText = msg.data;
+            messages.appendChild(currentMessage);
+        }
+
+        socket.onclose = function (msg, ev) {
+            console.warn("Socket - Connection closed");
+            console.warn({
+                message: msg,
+                event: ev
+            });
+        }
+
+        socket.onerror = function (msg, ev) {
+            console.error("Socket - Error");
+            console.error({
+                message: msg,
+                event: ev
+            });
+        }
+
+
+
+    </script>
+
+    <script>
+
+        function ConnectToSession() {
+            var message = document.getElementById("message");
+            socket.send(name + ": " + message.value);
+        }
+
+        function SayBye() {
+            socket.send(name + ":Has leaved the room");
+        }
+    </script>
+</body>
+</html>

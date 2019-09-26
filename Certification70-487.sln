@@ -34,6 +34,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFClientConsoleApplication_AzureBusRelay", "WCFClientConsoleApplication_AzureBusRelay\WCFClientConsoleApplication_AzureBusRelay.csproj", "{39065F8D-81C4-4D95-A2ED-D2F74491637A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web API", "Web API", "{B5DDC5B5-28FC-491E-8378-DE5E2DDBD6F2}"
+	ProjectSection(SolutionItems) = preProject
+		HTMLPage.html = HTMLPage.html
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiFromScratch", "WebApiFromScratch\WebApiFromScratch.csproj", "{396BD760-A5EB-4613-871C-A15671B0CC5B}"
 EndProject
